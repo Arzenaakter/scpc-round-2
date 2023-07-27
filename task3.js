@@ -1,29 +1,29 @@
 // Write a JavaScript program to find the most frequent element in an array and return it.
 
-const maxUsedNumber = (array) => {
-  const arrayOfObject = [];
+const frequentEle = (array) => {
+  const newArray = [];
 
   for (let i = 0; i < array.length; i++) {
-    const isMaxUsed = array.filter((element) => element === array[i]);
+    const matchElement = array.filter((element) => element === array[i]);
     const objArray = {
       mainNumber: array[i],
-      lengths: isMaxUsed.length,
+      arrayLength: matchElement.length,
     };
 
-    arrayOfObject.push(objArray);
+    newArray.push(objArray);
   }
 
-  const highestNumber = arrayOfObject.map((element) => element.lengths);
+  const highestNumber = newArray.map((element) => element.arrayLength);
 
   const maxUsedValue = Math.max(...highestNumber);
 
-  const filterArray = arrayOfObject.find(
-    (element) => element.lengths === maxUsedValue
+  const filterArray = newArray.find(
+    (element) => element.arrayLength === maxUsedValue
   );
 
   return filterArray.mainNumber;
 };
 
-const array = [3, 5, 13, 13, 3, 3, 23, 23, 23, 23, 23];
-const output = maxUsedNumber(array);
-console.log(output);
+const inputArray = [3, 5, 13, 13, 3, 3, 23, 23, 23, 23, 23];
+const result = frequentEle(inputArray);
+console.log(result);
